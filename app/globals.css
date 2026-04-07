@@ -1,26 +1,511 @@
 @import "tailwindcss";
 
+/* =============================================================
+   THOR Design System — Tailwind v4 CSS-first tokens
+   Light mode par défaut
+   ============================================================= */
+
+/* -----------------------------------------------------------
+   1. VARIABLES DE MARQUE
+   ----------------------------------------------------------- */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+
+  /* ── THOR (portail mère — fond blanc perle, accents ardoise) ── */
+  --thor-bg:           #F8FAFB;
+  --thor-surface:      #FFFFFF;
+  --thor-surface-2:    #F1F5F9;
+  --thor-border:       #E2E8F0;
+  --thor-border-soft:  #F1F5F9;
+  --thor-accent:       #0B1220;
+  --thor-accent-glow:  rgba(11,18,32,0.08);
+  --thor-text:         #0B1220;
+  --thor-muted:        #64748B;
+
+  /* ── Clair Vision (bleu précision) ── */
+  --vision-bg:         #F0F7FF;
+  --vision-surface:    #FFFFFF;
+  --vision-border:     #BFDBFE;
+  --vision-accent:     #2D8CFF;
+  --vision-accent-alt: #0EA5E9;
+  --vision-glow:       rgba(45,140,255,0.15);
+  --vision-glow-soft:  rgba(45,140,255,0.08);
+  --vision-text:       #0B1A2E;
+  --vision-muted:      #4A6480;
+
+  /* ── Clair Audition (vert clarté) ── */
+  --audition-bg:       #F0FDF8;
+  --audition-surface:  #FFFFFF;
+  --audition-border:   #A7F3D0;
+  --audition-accent:   #00C98A;
+  --audition-accent-alt:#10B981;
+  --audition-glow:     rgba(0,201,138,0.15);
+  --audition-glow-soft:rgba(0,201,138,0.08);
+  --audition-text:     #0B2018;
+  --audition-muted:    #3A6050;
+
+  /* ── Sémantique générale (reprend THOR) ── */
+  --background:        var(--thor-bg);
+  --surface:           var(--thor-surface);
+  --border:            var(--thor-border);
+  --text:              var(--thor-text);
+  --muted:             var(--thor-muted);
+
+  /* ── Primary = Clair Vision par défaut ── */
+  --primary:           var(--vision-accent);
+  --primary-dark:      #1A72E8;
+  --primary-light:     #EBF4FF;
+
+  /* ── Secondary = Clair Audition ── */
+  --secondary:         var(--audition-accent);
+  --secondary-dark:    #00A872;
+  --secondary-light:   #E6FFF7;
+
+  /* ── États sémantiques ── */
+  --success:           #16A34A;
+  --success-bg:        #F0FDF4;
+  --warning:           #D97706;
+  --warning-bg:        #FFFBEB;
+  --danger:            #DC2626;
+  --danger-bg:         #FEF2F2;
+  --info:              #0284C7;
+  --info-bg:           #F0F9FF;
+
+  /* ── Typographie ── */
+  --font-sans: var(--font-sans, ui-sans-serif, system-ui, "Inter", Arial, sans-serif);
+  --font-display: var(--font-display, "Syne", ui-sans-serif, system-ui, sans-serif);
+  --font-mono: ui-monospace, "SF Mono", "Fira Code", monospace;
 }
 
+/* -----------------------------------------------------------
+   2. TAILWIND v4 — @theme inline (expose les tokens aux classes)
+   ----------------------------------------------------------- */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  /* Fonts */
+  --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
+  --font-mono: var(--font-mono);
+
+  /* Couleurs THOR */
+  --color-thor-bg:          var(--thor-bg);
+  --color-thor-surface:     var(--thor-surface);
+  --color-thor-surface-2:   var(--thor-surface-2);
+  --color-thor-border:      var(--thor-border);
+  --color-thor-accent:      var(--thor-accent);
+  --color-thor-text:        var(--thor-text);
+  --color-thor-muted:       var(--thor-muted);
+
+  /* Couleurs Vision */
+  --color-vision-bg:        var(--vision-bg);
+  --color-vision-surface:   var(--vision-surface);
+  --color-vision-border:    var(--vision-border);
+  --color-vision-accent:    var(--vision-accent);
+  --color-vision-accent-alt:var(--vision-accent-alt);
+  --color-vision-text:      var(--vision-text);
+  --color-vision-muted:     var(--vision-muted);
+
+  /* Couleurs Audition */
+  --color-audition-bg:         var(--audition-bg);
+  --color-audition-surface:    var(--audition-surface);
+  --color-audition-border:     var(--audition-border);
+  --color-audition-accent:     var(--audition-accent);
+  --color-audition-accent-alt: var(--audition-accent-alt);
+  --color-audition-text:       var(--audition-text);
+  --color-audition-muted:      var(--audition-muted);
+
+  /* Couleurs sémantiques */
+  --color-background:   var(--background);
+  --color-surface:      var(--surface);
+  --color-border:       var(--border);
+  --color-text:         var(--text);
+  --color-muted:        var(--muted);
+  --color-primary:      var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-primary-light:var(--primary-light);
+  --color-secondary:    var(--secondary);
+  --color-secondary-dark: var(--secondary-dark);
+  --color-secondary-light:var(--secondary-light);
+  --color-success:      var(--success);
+  --color-success-bg:   var(--success-bg);
+  --color-warning:      var(--warning);
+  --color-warning-bg:   var(--warning-bg);
+  --color-danger:       var(--danger);
+  --color-danger-bg:    var(--danger-bg);
+  --color-info:         var(--info);
+  --color-info-bg:      var(--info-bg);
+
+  /* Compatibilité legacy (pour ne pas casser l'existant) */
+  --color-foreground:          var(--thor-text);
+  --color-card:                var(--thor-surface);
+  --color-card-foreground:     var(--thor-text);
+  --color-muted-foreground:    var(--thor-muted);
+
+  /* Border radius */
+  --radius-sharp:  4px;
+  --radius-soft:   12px;
+  --radius-large:  24px;
+  --radius-pill:   9999px;
+  --radius-md:     0.75rem;
+  --radius-lg:     1rem;
+  --radius-xl:     1.25rem;
+  /* Compatibilité Tailwind standard */
+  --radius-2xl:    1.5rem;
+  --radius-3xl:    2rem;
+
+  /* Shadows */
+  --shadow-soft:          0 2px 12px rgba(11,18,32,0.06);
+  --shadow-card:          0 4px 24px rgba(11,18,32,0.08);
+  --shadow-elevated:      0 8px 40px rgba(11,18,32,0.12);
+  --shadow-glow-vision:   0 0 24px rgba(45,140,255,0.20);
+  --shadow-glow-audition: 0 0 24px rgba(0,201,138,0.20);
+  --shadow-glow-thor:     0 0 24px rgba(11,18,32,0.12);
+
+  /* Keyframes */
+  --animate-fade-in:    fadeIn 250ms ease-out both;
+  --animate-slide-up:   slideUp 280ms ease-out both;
+  --animate-pulse-glow: pulseGlow 2s ease-in-out infinite;
+  --animate-shimmer:    shimmer 1.8s linear infinite;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* -----------------------------------------------------------
+   3. BASE
+   ----------------------------------------------------------- */
+html, body {
+  height: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  color: var(--thor-text);
+  background: var(--thor-bg);
+  letter-spacing: -0.01em;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar subtile */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--thor-border); border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: var(--thor-muted); }
+
+/* -----------------------------------------------------------
+   4. KEYFRAMES
+   ----------------------------------------------------------- */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 0 transparent; }
+  50%       { box-shadow: 0 0 20px 4px rgba(45,140,255,0.20); }
+}
+
+@keyframes shimmer {
+  from { background-position: -200% 0; }
+  to   { background-position:  200% 0; }
+}
+
+@keyframes thor-marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes thor-sweep {
+  0%, 72% { transform: translateX(-140%) rotate(14deg); opacity: 0; }
+  76%      { opacity: 0.25; }
+  100%     { transform: translateX(260%) rotate(14deg); opacity: 0; }
+}
+
+@keyframes thorWaveSlide {
+  from { transform: translateX(0); }
+  to   { transform: translateX(220px); }
+}
+
+@keyframes floatY {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-14px); }
+}
+
+@keyframes orbDrift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(40px, -30px) scale(1.08); }
+  66%       { transform: translate(-30px, 20px) scale(0.95); }
+}
+
+@keyframes gradientFlow {
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
+}
+
+/* -----------------------------------------------------------
+   5. CLASSES UTILITAIRES
+   ----------------------------------------------------------- */
+@layer utilities {
+
+  /* ── Glassmorphism ── */
+  .glass {
+    background: rgba(255,255,255,0.72);
+    border: 1px solid rgba(11,18,32,0.06);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  .glass-vision {
+    background: rgba(240,247,255,0.80);
+    border: 1px solid var(--vision-border);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  .glass-audition {
+    background: rgba(240,253,248,0.80);
+    border: 1px solid var(--audition-border);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  /* ── Gradients de marque ── */
+  .gradient-vision {
+    background: linear-gradient(135deg, var(--vision-accent) 0%, var(--vision-accent-alt) 100%);
+  }
+
+  .gradient-audition {
+    background: linear-gradient(135deg, var(--audition-accent) 0%, var(--audition-accent-alt) 100%);
+  }
+
+  .gradient-thor {
+    background: linear-gradient(135deg, #0B1220 0%, #1E2A3A 100%);
+  }
+
+  .gradient-vision-text {
+    background: linear-gradient(135deg, var(--vision-accent), var(--vision-accent-alt));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-audition-text {
+    background: linear-gradient(135deg, var(--audition-accent), var(--audition-accent-alt));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ── Glow ── */
+  .glow-vision {
+    box-shadow: 0 0 24px var(--vision-glow);
+  }
+
+  .glow-audition {
+    box-shadow: 0 0 24px var(--audition-glow);
+  }
+
+  .glow-thor {
+    box-shadow: 0 0 24px var(--thor-accent-glow);
+  }
+
+  /* ── Reveal animation ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 700ms ease, transform 700ms ease;
+  }
+  .reveal[data-in="true"] {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── Titres ── */
+  .h-title {
+    font-family: var(--font-display);
+    letter-spacing: -0.03em;
+  }
+
+  /* ── Shine sweep (CTA) ── */
+  .shine-sweep {
+    position: relative;
+    overflow: hidden;
+  }
+  .shine-sweep::after {
+    content: "";
+    position: absolute;
+    inset: -30% auto -30% -60%;
+    width: 45%;
+    transform: translateX(-140%) rotate(14deg);
+    background: linear-gradient(
+      120deg,
+      transparent 0%,
+      rgba(255,255,255,0.55) 45%,
+      transparent 70%
+    );
+    opacity: 0;
+    animation: thor-sweep 6.5s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  /* ── Skeleton shimmer ── */
+  .skeleton {
+    background: linear-gradient(
+      90deg,
+      var(--thor-surface-2) 25%,
+      var(--thor-border) 50%,
+      var(--thor-surface-2) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.8s linear infinite;
+    border-radius: var(--radius-soft);
+  }
+
+  /* ── Marquee ── */
+  .thor-marquee {
+    animation: thor-marquee 40s linear infinite;
+    will-change: transform;
+  }
+  .thor-marquee:hover {
+    animation-play-state: paused;
+  }
+  .animate-thor-marquee {
+    animation: thor-marquee 40s linear infinite;
+  }
+
+  /* ── Waves ── */
+  .thor-wave {
+    transform-box: fill-box;
+    transform-origin: center;
+    will-change: transform;
+  }
+  .thor-wave-1 { animation: thorWaveSlide  9s linear infinite; }
+  .thor-wave-2 { animation: thorWaveSlide 11s linear infinite; opacity: 0.8; }
+  .thor-wave-3 { animation: thorWaveSlide 13s linear infinite; opacity: 0.6; }
+}
+
+/* -----------------------------------------------------------
+   6. MODE SOMBRE — [data-theme="dark"] sur <html>
+   ----------------------------------------------------------- */
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* THOR dark */
+  --thor-bg:           #0f172a;
+  --thor-surface:      #1e293b;
+  --thor-surface-2:    #263145;
+  --thor-border:       rgba(255,255,255,0.09);
+  --thor-border-soft:  rgba(255,255,255,0.05);
+  --thor-text:         #f1f5f9;
+  --thor-muted:        #94a3b8;
+  --thor-accent-glow:  rgba(45,140,255,0.12);
+
+  /* Vision dark */
+  --vision-bg:         #0c1829;
+  --vision-surface:    #162235;
+  --vision-border:     rgba(45,140,255,0.20);
+  --vision-glow:       rgba(45,140,255,0.10);
+  --vision-glow-soft:  rgba(45,140,255,0.05);
+  --vision-text:       #dce8f6;
+  --vision-muted:      #7c99bb;
+
+  /* Audition dark */
+  --audition-bg:       #0a1c16;
+  --audition-surface:  #132118;
+  --audition-border:   rgba(0,201,138,0.18);
+  --audition-glow:     rgba(0,201,138,0.10);
+  --audition-glow-soft:rgba(0,201,138,0.05);
+  --audition-text:     #d4f5ec;
+  --audition-muted:    #5e9982;
+
+  /* Semantic dark */
+  --background:        #0f172a;
+  --surface:           #1e293b;
+  --border:            rgba(255,255,255,0.09);
+  --text:              #f1f5f9;
+  --muted:             #94a3b8;
+
+  /* Lights */
+  --primary-light:     rgba(45,140,255,0.14);
+  --secondary-light:   rgba(0,201,138,0.12);
+  --success-bg:        rgba(22,163,74,0.12);
+  --warning-bg:        rgba(217,119,6,0.12);
+  --danger-bg:         rgba(220,38,38,0.12);
+  --info-bg:           rgba(2,132,199,0.12);
+}
+
+/* Body en dark */
+[data-theme="dark"] body {
+  background: var(--thor-bg);
+  color: var(--thor-text);
+}
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.12);
+}
+
+/* Glassmorphism dark */
+[data-theme="dark"] .glass {
+  background: rgba(30,41,59,0.72);
+  border: 1px solid rgba(255,255,255,0.09);
+}
+[data-theme="dark"] .glass-vision {
+  background: rgba(22,34,53,0.82);
+  border: 1px solid var(--vision-border);
+}
+[data-theme="dark"] .glass-audition {
+  background: rgba(19,33,24,0.82);
+  border: 1px solid var(--audition-border);
+}
+
+/* Tailwind text utility overrides */
+[data-theme="dark"] .text-slate-900 { color: #f1f5f9 !important; }
+[data-theme="dark"] .text-slate-800 { color: #e2e8f0 !important; }
+[data-theme="dark"] .text-slate-700 { color: #cbd5e1 !important; }
+[data-theme="dark"] .text-slate-600 { color: #94a3b8 !important; }
+[data-theme="dark"] .text-slate-500 { color: #64748b !important; }
+
+/* Tailwind bg utility overrides */
+[data-theme="dark"] .bg-white        { background-color: #1e293b !important; }
+[data-theme="dark"] .bg-slate-50     { background-color: #0f172a !important; }
+[data-theme="dark"] .bg-slate-100    { background-color: #1e293b !important; }
+[data-theme="dark"] .bg-slate-200    { background-color: #263145 !important; }
+
+/* Border overrides */
+[data-theme="dark"] .border-slate-100  { border-color: rgba(255,255,255,0.06) !important; }
+[data-theme="dark"] .border-slate-200  { border-color: rgba(255,255,255,0.09) !important; }
+[data-theme="dark"] .divide-slate-100  > * + * { border-color: rgba(255,255,255,0.05) !important; }
+[data-theme="dark"] .divide-slate-100\/60 > * + * { border-color: rgba(255,255,255,0.04) !important; }
+
+/* Emerald/teal hover in dark (tables) */
+[data-theme="dark"] .hover\:bg-emerald-50\/20:hover { background-color: rgba(16,185,129,0.06) !important; }
+
+/* Skeleton dark */
+[data-theme="dark"] .skeleton {
+  background: linear-gradient(90deg, #1e293b 25%, #263145 50%, #1e293b 75%);
+  background-size: 200% 100%;
+}
+
+/* -----------------------------------------------------------
+   8. REDUCED MOTION
+   ----------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .thor-marquee,
+  .animate-thor-marquee {
+    animation: none;
+  }
+  .shine-sweep::after {
+    animation: none;
+  }
+  .skeleton {
+    animation: none;
+    background: var(--thor-surface-2);
+  }
 }

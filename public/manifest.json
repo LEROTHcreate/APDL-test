@@ -1,0 +1,43 @@
+{
+  "name": "THOR — Clair Vision & Clair Audition",
+  "short_name": "THOR",
+  "description": "Logiciel certifié pour opticiens et audioprothésistes — Agenda, dossiers patients, devis, HDS.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#2D8CFF",
+  "orientation": "portrait-primary",
+  "lang": "fr",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Clair Vision",
+      "short_name": "Vision",
+      "description": "Espace opticien",
+      "url": "/clair-vision/pro",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Clair Audition",
+      "short_name": "Audition",
+      "description": "Espace audioprothésiste",
+      "url": "/clair-audition/pro",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    }
+  ],
+  "categories": ["medical", "business", "productivity"],
+  "screenshots": []
+}
