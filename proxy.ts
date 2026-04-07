@@ -2,7 +2,7 @@ import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { verifySession } from "@/lib/session";
 
-export async function middleware(req: NextRequest) {
+export async function proxy(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
   const isProRoute =
@@ -15,7 +15,7 @@ export async function middleware(req: NextRequest) {
 
   const token = req.cookies.get("thor_pro")?.value;
 
-  if (!token || !await verifySession(token)) {
+  if (!token || !(await verifySession(token))) {
     const url = req.nextUrl.clone();
     url.pathname = "/connexion/praticien";
     url.searchParams.set("next", pathname);

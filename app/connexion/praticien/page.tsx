@@ -512,13 +512,19 @@ function ConnexionPraticienPageContent() {
                           method: "POST",
                           headers: { "Content-Type": "application/json" },
                           body: JSON.stringify({ password }),
+                          credentials: "same-origin",
                         });
-                        const data = await res.json();
-                        if (data.userId) saveCurrentUserId(data.userId);
+                        if (res.ok) {
+                          const data = await res.json();
+                          if (data.userId) saveCurrentUserId(data.userId);
+                          router.push(routes[module]);
+                        } else {
+                          const data = await res.json().catch(() => ({}));
+                          alert(data.error ?? "Erreur de connexion");
+                        }
                       } catch {
-                        // mode test sans serveur — on navigue quand même
+                        alert("Impossible de contacter le serveur. Réessayez.");
                       }
-                      router.push(routes[module]);
                     }}
                     disabled={module === "both"}
                     className="rounded-xl font-semibold text-sm px-6 py-2.5 text-white transition-all hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
@@ -947,13 +953,18 @@ function ConnexionPraticienPageContent() {
                           method: "POST",
                           headers: { "Content-Type": "application/json" },
                           body: JSON.stringify({ password: "" }),
+                          credentials: "same-origin",
                         });
-                        const data = await res.json();
-                        if (data.userId) saveCurrentUserId(data.userId);
+                        if (res.ok) {
+                          const data = await res.json();
+                          if (data.userId) saveCurrentUserId(data.userId);
+                          router.push(routes[module]);
+                        } else {
+                          alert("Erreur de connexion");
+                        }
                       } catch {
-                        // mode test sans serveur — on navigue quand même
+                        alert("Impossible de contacter le serveur.");
                       }
-                      router.push(routes[module]);
                     }}
                     disabled={module === "both"}
                     className="rounded-xl font-semibold text-sm px-6 py-2.5 text-white transition-all hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
